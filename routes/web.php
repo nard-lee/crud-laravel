@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GoogleController;
-
 
 Route::get('/dashboard', function () {
     return view('welcome');
+})->middleware('auth');
+
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect('/account/login');
 });
 
-Route::get('/auth/redirect', [GoogleController::class, 'redirect']);
-Route::get('/auth/handle', [GoogleController::class, 'handle']);
+require __DIR__.'/auth/auth.php';
