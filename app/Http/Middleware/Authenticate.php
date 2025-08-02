@@ -13,7 +13,7 @@ class Authenticate extends \Illuminate\Auth\Middleware\Authenticate
     {
         if (!$request->expectsJson()) 
         {
-            return '/account/login';
+            return '/login';
         }
     }
 }
