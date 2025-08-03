@@ -3,7 +3,7 @@ document
     .addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        console.log("yes")
+        console.log("yes");
 
         const form = event.target;
         const data = {
@@ -12,7 +12,7 @@ document
             password: form.password.value,
         };
 
-        console.log(data)
+        console.log(data);
 
         try {
             const response = await fetch("/signup", {
@@ -27,18 +27,19 @@ document
                 body: JSON.stringify(data),
             });
 
-            console.log(response)
+            console.log(response);
 
             if (response.ok) {
                 const res = await response.json();
-                console.log(res);
                 window.location.href = "/dashboard";
             } else {
                 const errorData = await response.json();
-                console.log(errorData);
-                document.querySelector('.err.name').innerHTML = errorData.errors.name[0];
-                document.querySelector('.err.email').innerHTML = errorData.errors.email[0];
-                document.querySelector('.err.password').innerHTML = errorData.errors.password[0];
+                document.querySelector(".err.name").innerHTML =
+                    errorData.errors.name[0];
+                document.querySelector(".err.email").innerHTML =
+                    errorData.errors.email[0];
+                document.querySelector(".err.password").innerHTML =
+                    errorData.errors.password[0];
             }
         } catch (error) {}
     });

@@ -33,6 +33,7 @@
     >
         Login
     </button>
+    
     <a
         href="/auth/redirect"
         class="flex items-center justify-center gap-2 w-full px-4 py-2 rounded transition hover:bg-gray-50"
@@ -44,6 +45,7 @@
         />
         <span class="text-sm font-medium">Sign in with Google</span>
     </a>
+    <a class="text-center" href="/signup">Dont have an account? Signup</a>
 </form>
 @endsection 
 

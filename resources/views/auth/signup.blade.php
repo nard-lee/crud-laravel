@@ -37,9 +37,14 @@
         />
         </div>
         <span class="err password"></span>
-        <a
+        <button
+            class="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-800 border-none text-white text-bold rounded-full cursor-pointer"
+        >
+            Signup
+        </button>
+                <a
             href="/auth/redirect"
-            class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white border border-gray-300 text-gray-800 rounded-md transition hover:bg-gray-50"
+            class="flex items-center justify-center gap-2 w-full px-4 py-3 text-gray-800 "
         >
             <img
                 src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
@@ -48,11 +53,7 @@
             />
             <span class="text-sm font-medium">Sign in with Google</span>
         </a>
-        <button
-            class="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-800 border-none text-white text-bold rounded-md cursor-pointer"
-        >
-            Signup
-        </button>
+        <a class="text-center" href="/login">Already have an account? Login</a>
     </form>
 @endsection
 
