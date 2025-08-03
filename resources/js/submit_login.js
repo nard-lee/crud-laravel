@@ -29,7 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.location.href = "/dashboard";
                 } else {
                     const errorData = await response.json();
-                    console.log(errorData);
+                    document.querySelector('.err.email').innerHTML = errorData.errors.email[0];
+                    document.querySelector('.err.password')
+                    .innerHTML = errorData.errors.password[0];
+                    console.log(errorData.errors.password);
                 }
             } catch (error) {}
         });

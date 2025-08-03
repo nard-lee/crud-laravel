@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 
-
 class GoogleController extends Controller
 {
     public function redirect()
@@ -17,26 +16,31 @@ class GoogleController extends Controller
 
     public function handle()
     {
-        try {
+        try 
+        {
             $googleUser = Socialite::driver('google')->user();
         } catch(\Exception $err) {
             return redirect('/account/login')->with('error', 'Google authentication failed');
         }
 
-        if (!$googleUser->getEmail()) {
+        if (!$googleUser->getEmail()) 
+        {
             abort(400, 'No email address returned from Google.');
         }
 
         $user = User::where('email', $googleUser->getEmail())->first();
 
-        if($user){
+        if($user)
+        {
             $user->update([
                 'google_id' => $user->google_id ?? $googleUser->getId(),
                 'avatar' => $user->avatar ?? $googleUser->getAvatar(),
                 'auth_provider' => 'google',
                 'email_verified_at' => $user->email_verified_at ?? now()
             ]);
-        } else {
+        } 
+        else 
+        {
             $user = User::updateOrCreate(
                 ['email' => $googleUser->getEmail()],
                 [   

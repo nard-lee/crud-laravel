@@ -15,7 +15,8 @@ class AuthController extends Controller
     {   
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) 
+        {
             $request->session()->regenerate();
 
             return response()->json([
@@ -30,7 +31,8 @@ class AuthController extends Controller
 
     public function signup(SignupRequest $request)
     {
-        try {
+        try 
+        {
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -44,11 +46,12 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Signup successful'
             ]);
-            
-        } catch (\Exception $e) {
-            return back()->withErrors([
-                'email' => 'Something went wrong. Please try again.'
-            ])->withInput($request->except('password'));
+        } 
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'message' => 'Something went wrong. Please try again.'
+            ], 422);
         }
     }
 }
